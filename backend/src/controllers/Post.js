@@ -9,3 +9,17 @@ module.exports.save = async (req, res) => {
         return res.status(500);
     }
 }
+
+module.exports.update = () => {}
+
+module.exports.delete = async(req, res) => {
+    try {
+        const post = await Post.findByPk(req.params.id);
+        await post.destroy();
+        return res.json({ msg:"Publicação excluida com suceso!" });
+    } catch (error) {
+        return res.json({ msg: "Erro ao excluir Publicação" }); 
+    }
+}
+
+module.exports.getById = () => {}
